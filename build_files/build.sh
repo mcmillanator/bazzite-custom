@@ -10,7 +10,36 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y tmux 
+dnf copr enable -y dejan/lazygit
+dnf5 install -y dnf5-plugins
+dnf5 install -y \
+	alacritty \
+	btop \
+	direnv \
+	docker \
+	docker-compose \
+	fastfetch \
+	fd-find \
+	fzf \
+	git \
+	just \
+	lazygit \
+	lnav \
+	mackup \
+	mkcert \
+	neovim \
+	nodejs \
+	perl \
+	podman-compose \
+	python3-pip \
+	python3-setuptools \
+	ripgrep \
+	ruby \
+	tmux \
+	zoxide \
+	zsh
+
+dnf5 install -y gh --repo gh-cli
 
 # Use a COPR Example:
 #
@@ -22,3 +51,5 @@ dnf5 install -y tmux
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
+systemctl enable docker.socket
+/ctx/nerd-font.sh

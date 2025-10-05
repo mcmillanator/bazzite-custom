@@ -3,16 +3,8 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Image
-FROM ghcr.io/ublue-os/bazzite:stable
+FROM tower:5000/bazzite
 
-## Other possible base images include:
-# FROM ghcr.io/ublue-os/bazzite:latest
-# FROM ghcr.io/ublue-os/bluefin-nvidia:stable
-# 
-# ... and so on, here are more base images
-# Universal Blue Images: https://github.com/orgs/ublue-os/packages
-# Fedora base image: quay.io/fedora/fedora-bootc:41
-# CentOS base images: quay.io/centos-bootc/centos-bootc:stream10
 
 ### MODIFICATIONS
 ## make modifications desired in your image and install packages by modifying the build.sh script
@@ -23,7 +15,25 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
     /ctx/build.sh
-    
+COPY --from=ctx /docker/daemon.json /etc/docker/daemon.json
+
+# Set a user for local VM testing
+# RUN useradd -s /bin/zsh -m -G wheel -G root dev
+# RUN echo "dev:dev" | chpasswd
+# RUN echo "dev ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/myuser
+# RUN usermod -a -G wheel -G root root
+
 ### LINTING
 ## Verify final image and contents are correct.
 RUN bootc container lint
+LABEL note=bazzite-custom
+LABEL containers.bootc="1"
+LABEL io.artifacthub.package.deprecated="false"
+LABEL io.artifacthub.package.keywords="bootc,bazzite,custom"
+LABEL io.artifacthub.package.license="Apache-2.0"
+LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/mcmillanator/bazzite-custom/refs/heads/main/README.md"
+LABEL org.opencontainers.image.description="My Customized Bazzite Image"
+LABEL org.opencontainers.image.documentation="https://raw.githubusercontent.com/mcmillanator/bazzite-custom/refs/heads/main/README.md"
+LABEL org.opencontainers.image.title="bazzite-custom"
+LABEL org.opencontainers.image.url="https://github.com/mcmillanator/bazzite-custom"
+
