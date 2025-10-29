@@ -11,7 +11,6 @@ set -ouex pipefail
 
 # this installs a package from fedora repos
 dnf copr enable -y dejan/lazygit
-dnf5 install -y dnf5-plugins
 dnf5 install -y \
 	alacritty \
 	btop \
@@ -42,8 +41,6 @@ dnf5 install -y \
 	zoxide \
 	zsh
 
-dnf5 install -y gh --repo gh-cli
-
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging
@@ -56,3 +53,4 @@ dnf5 install -y gh --repo gh-cli
 systemctl enable podman.socket
 systemctl enable docker.socket
 /ctx/nerd-font.sh
+/ctx/gh-cli.sh
