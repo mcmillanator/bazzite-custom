@@ -20,10 +20,13 @@ dnf5 install -y \
 	docker-compose \
 	fastfetch \
 	fd-find \
+	fprintd \
+	fprintd-pam \
 	fzf \
 	git \
 	just \
 	lazygit \
+	libfprint \
 	lnav \
 	mackup \
 	mkcert \
