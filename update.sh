@@ -15,3 +15,4 @@ podman push -q "$custom_image:latest"
 podman tag "$custom_image:latest" "$custom_image:stable"
 podman push -q "$custom_image:stable"
 echo "$custom_image update complete."
+sudo rpm-ostree upgrade
