@@ -3,7 +3,7 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Image
-FROM tower:5000/bazzite:stable
+FROM ghcr.io/ublue-os/bazzite:stable
 
 
 ### MODIFICATIONS
