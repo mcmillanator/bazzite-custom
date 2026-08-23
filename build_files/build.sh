@@ -32,8 +32,8 @@ dnf5 install -y \
 	fprintd-pam \
 	fzf \
 	git \
+	go \
 	just \
-	lazygit \
 	libfprint \
 	lnav \
 	mackup \
@@ -60,4 +60,4 @@ systemctl enable docker
 /ctx/gh-cli.sh
 /ctx/minikube.sh
 /ctx/devcontainer-cli.sh
-
+/ctx/lazygit.sh
