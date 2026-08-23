@@ -1,8 +1,8 @@
 #! /bin/sh
 set -e
 upstream_image="ghcr.io/ublue-os/bazzite:stable"
-local_upstream_cache="tower:5000/bazzite:stable"
-custom_image="tower:5000/bazzite-custom"
+local_upstream_cache="tower.covecode.com:5000/bazzite:stable"
+custom_image="tower.covecode.com:5000/bazzite-custom"
 
 echo "Pulling upstream image: $upstream_image"
 podman pull -q $upstream_image
