@@ -1,6 +1,0 @@
-{
-  "features": {
-    "containerd-snapshotter": true
-  },
-  "insecure-registries": ["tower.covecode.com:5000"]
-}
